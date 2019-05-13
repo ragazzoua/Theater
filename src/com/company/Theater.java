@@ -5,7 +5,7 @@ import java.util.*;
 public class Theater {
 
     private final String theaterName;
-    private Collection<Seat> seats = new ArrayList<>();
+    private List<Seat> seats = new ArrayList<>();
 
     public Theater(String theaterName, int numRows, int seatsPerRow) {
         this.theaterName = theaterName;
@@ -24,7 +24,8 @@ public class Theater {
     }
 
     public boolean reserveSeat(String seatNumber) {
-        Seat requestedSeat = null;
+        Seat requestedSeat = new Seat(seatNumber);
+        int foundSeat = Collections.binarySearch(seats, requestedSeat, null);
         for (Seat seat : seats) {
             System.out.print(".");
             if (seat.getSeatNumber().equals(seatNumber)) {
