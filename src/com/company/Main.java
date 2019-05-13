@@ -19,5 +19,7 @@ public class Main {
             System.out.println("Sorry seat is taken");
         }
 
+        System.out.println(theater.getTheaterName());
+
     }
 }
