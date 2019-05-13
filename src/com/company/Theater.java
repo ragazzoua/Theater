@@ -5,7 +5,7 @@ import java.util.*;
 public class Theater {
 
     private final String theaterName;
-    private Collection<Seat> seats = new LinkedHashSet<>();
+    private Collection<Seat> seats = new ArrayList<>();
 
     public Theater(String theaterName, int numRows, int seatsPerRow) {
         this.theaterName = theaterName;
@@ -26,6 +26,7 @@ public class Theater {
     public boolean reserveSeat(String seatNumber) {
         Seat requestedSeat = null;
         for (Seat seat : seats) {
+            System.out.print(".");
             if (seat.getSeatNumber().equals(seatNumber)) {
                 requestedSeat = seat;
                 break;
@@ -45,12 +46,17 @@ public class Theater {
         }
     }
 
-    private class Seat {
+    private class Seat implements Comparable<Seat> {
         private final String seatNumber;
         private boolean reserved = false;
 
         public Seat(String seatNumber) {
             this.seatNumber = seatNumber;
+        }
+
+        @Override
+        public int compareTo(Seat seat) {
+            return this.seatNumber.compareTo(seat.getSeatNumber());
         }
 
         public boolean reserve() {
