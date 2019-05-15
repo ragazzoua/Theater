@@ -47,6 +47,29 @@ public class Theater {
 //        return requestedSeat.reserve();
     }
 
+    public boolean reserveSeat1(String seatnumber) {
+        int low = 0;
+        int hight = seats.size() - 1;
+
+        while (low <= hight) {
+            System.out.print(".");
+            int mid = (low + hight) / 2;
+            Seat midVal = seats.get(mid);
+            int cmp = midVal.getSeatNumber().compareTo(seatnumber);
+
+            if (cmp < 0) {
+                low = mid + 1;
+            } else if (cmp > 0) {
+                hight = mid - 1;
+            }
+            else {
+                return seats.get(mid).reserve();
+            }
+        }
+        System.out.println("There is no seat" + seatnumber);
+        return false;
+    }
+
     //    for testing
     public void getSeats() {
         for (Seat seat : seats) {
