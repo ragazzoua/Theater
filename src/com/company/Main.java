@@ -40,6 +40,9 @@ public class Main {
         sortList(seatCopy);
         printList(seatCopy);
 
+//        List<Theater.Seat> newList = new ArrayList<>(theater.seats.size());
+//        Collections.copy(newList, theater.seats);
+
 //        theater.getSeats();
 //
 //        if (theater.reserveSeat("H11")) {
